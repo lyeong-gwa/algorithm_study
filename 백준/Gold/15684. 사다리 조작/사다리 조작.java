@@ -10,14 +10,12 @@ public class Main {
 	static int N, M, H;
 	static boolean able = false;
 	static int answer = Integer.MAX_VALUE;
-	static ArrayList<xy> as;
 	static int cnt = 0;
 	public static void main(String[] args) throws Exception{
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		StringTokenizer st;
 		
-		as = new ArrayList<>();
 		st = new StringTokenizer(bf.readLine());
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
@@ -60,9 +58,7 @@ public class Main {
 						if (table[i][j] == 0 && table[i + 1][j]==0) {
 							table[i][j] = 1;
 							table[i + 1][j] = -1;
-							as.add(new xy(i,j));
 							DFS(depth + 1, start_i,start_j);
-							as.remove(as.size()-1);
 							table[i][j] = 0;
 							table[i + 1][j] = 0;
 
@@ -89,18 +85,5 @@ public class Main {
 
 		return true;
 	}
-}
-
-class xy{
-	int x,y;
-	public xy(int a,int b) {
-		x=a;
-		y=b;
-	}
-	@Override
-	public String toString() {
-		return "xy [x=" + x + ", y=" + y + "]";
-	}
-	
 }
 
